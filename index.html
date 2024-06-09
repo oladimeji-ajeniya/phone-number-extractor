@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Phone Number Extractor with Comma Separator</title>
+    <title>Phone Number Extractor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,21 +13,39 @@
             height: 200px;
         }
         #result {
-            margin-top: 20px;
             font-family: monospace;
             white-space: pre-wrap;
             border: 1px solid black;
             padding: 10px;
             width: 80%;
-            height: 200px;
+            height: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: auto;
+            margin-top: 40px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h1>Phone Number Extractor with Comma Separator</h1>
+    <h1>Phone Number Extractor</h1>
     <textarea id="dataInput" placeholder="Paste data here..."></textarea>
     <br>
-    <button onclick="extractPhoneNumbers()">Extract Phone Numbers</button>
+    <button class="button" onclick="extractPhoneNumbers()">Extract Phone Numbers</button>
     <div id="result"></div>
 
     <script>
@@ -41,10 +59,10 @@
             const lines = data.split('\n');
             const phoneNumbers = lines.map(line => line.split(/\s+/)[0]);
 
-            // Add a comma at the end of each line
-            const formattedPhoneNumbers = phoneNumbers.map(phoneNumber => phoneNumber + ',');
+            // Format the phone numbers horizontally with comma separator
+            const formattedPhoneNumbers = phoneNumbers.join(',');
 
-            document.getElementById("result").textContent = formattedPhoneNumbers.join('\n');
+            document.getElementById("result").textContent = formattedPhoneNumbers;
         }
     </script>
 </body>
