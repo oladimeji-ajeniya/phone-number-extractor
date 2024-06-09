@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Phone Number Extractor</title>
+    <title>Phone Number Extractor with Comma Separator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-    <h1>Phone Number Extractor</h1>
+    <h1>Phone Number Extractor with Comma Separator</h1>
     <textarea id="dataInput" placeholder="Paste data here..."></textarea>
     <br>
     <button onclick="extractPhoneNumbers()">Extract Phone Numbers</button>
@@ -41,7 +41,10 @@
             const lines = data.split('\n');
             const phoneNumbers = lines.map(line => line.split(/\s+/)[0]);
 
-            document.getElementById("result").textContent = phoneNumbers.join('\n');
+            // Add a comma at the end of each line
+            const formattedPhoneNumbers = phoneNumbers.map(phoneNumber => phoneNumber + ',');
+
+            document.getElementById("result").textContent = formattedPhoneNumbers.join('\n');
         }
     </script>
 </body>
