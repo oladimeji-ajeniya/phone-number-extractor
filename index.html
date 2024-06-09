@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phone Number Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        textarea {
+            width: 80%;
+            height: 200px;
+        }
+        #result {
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            border: 1px solid black;
+            padding: 10px;
+            width: 80%;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Phone Number Extractor</h1>
+    <textarea id="dataInput" placeholder="Paste data here..."></textarea>
+    <br>
+    <button onclick="extractPhoneNumbers()">Extract Phone Numbers</button>
+    <div id="result"></div>
+
+    <script>
+        function extractPhoneNumbers() {
+            const data = document.getElementById("dataInput").value.trim();
+            if (!data) {
+                alert("Please enter or paste data.");
+                return;
+            }
+
+            const lines = data.split('\n');
+            const phoneNumbers = lines.map(line => line.split(/\s+/)[0]);
+
+            document.getElementById("result").textContent = phoneNumbers.join('\n');
+        }
+    </script>
+</body>
+</html>
